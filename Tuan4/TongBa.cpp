@@ -6,7 +6,9 @@
 
 using namespace std;
 
-void findTriplets(vector<int> arr)
+typedef long long LL;
+
+void findTriplets(vector<LL> arr)
 {
  	int n = arr.size();
     sort(arr.begin(), arr.end());
@@ -18,8 +20,8 @@ void findTriplets(vector<int> arr)
 
         int l = i + 1;
         int r = n - 1;
-        int x = arr[i];
-        set<tuple<int, int>> printed;
+        LL x = arr[i];
+        set<tuple<LL, LL>> printed;
         while (l < r)
         {
         	if (l > i + 1 && arr[l] == arr[l - 1]) {
@@ -32,9 +34,9 @@ void findTriplets(vector<int> arr)
             }
             if (x + arr[l] + arr[r] == 0)
             {
-            	if (printed.find(tuple<int, int>(arr[l], arr[r])) == printed.end()){
+            	if (printed.find(tuple<LL, LL>(arr[l], arr[r])) == printed.end()){
 	                cout << x << " " <<  arr[l] << " " << arr[r] << endl;
-	                printed.insert(tuple<int, int>(arr[l], arr[r]));
+	                printed.insert(tuple<LL, LL>(arr[l], arr[r]));
                 }
                 l++;
                 r--;
@@ -51,8 +53,8 @@ void findTriplets(vector<int> arr)
 int main() {
     int n;
     cin >> n;
-    vector<int> nums(n);
-    for (int &x : nums)
+    vector<LL> nums(n);
+    for (LL &x : nums)
         cin >> x;
     findTriplets(nums);
     return 0;
